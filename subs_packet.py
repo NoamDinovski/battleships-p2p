@@ -15,13 +15,13 @@ class Status(enum.Enum):
     """
     Enumeration for a Subs Protocol packet's status, for either ANSWER or ERROR packets.
     """
-    ANSWER_CORRECT = "CORRECT",
-    ANSWER_INCORRECT = "INCORRECT",
-    ANSWER_FULL_SUB = "FULL-SUB",
-    ANSWER_VICTORY = "VICTORY",
-    ERROR_OUT_OF_RANGE = "OUT-OF-RANGE",
-    ERROR_ATTEMPT_NOT_IN_TURN = "ATTEMPT-NOT-IN-TURN",
-    ERROR_CLOSED = "CLOSED",
+    ANSWER_CORRECT = "CORRECT"
+    ANSWER_INCORRECT = "INCORRECT"
+    ANSWER_FULL_SUB = "FULL-SUB"
+    ANSWER_VICTORY = "VICTORY"
+    ERROR_OUT_OF_RANGE = "OUT-OF-RANGE"
+    ERROR_ATTEMPT_NOT_IN_TURN = "ATTEMPT-NOT-IN-TURN"
+    ERROR_CLOSED = "CLOSED"
     ERROR_UNEXPECTED = "UNEXPECTED"
 
 
@@ -64,7 +64,7 @@ class SubsPacket:
         :return: A new Subs Protocol ANSWER packet.
         """
 
-        return SubsPacket(version, Type.ANSWER, status, x_coord, y_coord)
+        return SubsPacket(version, Type.ANSWER, status=status, x_coord=x_coord, y_coord=y_coord)
 
     @staticmethod
     def error(version: str, status: Status):
@@ -75,7 +75,7 @@ class SubsPacket:
         :param ErrorStatus status: The type of error.
         :return: A new Subs Protocol ERROR packet.
         """
-        return SubsPacket(version, Type.ERROR, status)
+        return SubsPacket(version, Type.ERROR, status=status)
 
     def __init__(self, version: str, packet_type: Type, status=None, x_coord=None, y_coord=None):
         """
