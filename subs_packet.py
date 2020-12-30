@@ -92,3 +92,14 @@ class SubsPacket:
         self.status = status
         self.x_coord = x_coord
         self.y_coord = y_coord
+
+    def __repr__(self):
+        repr_string = f"Version: {self.version}\n" \
+                      f"Type: {self.packet_type}"
+        if self.status is not None:
+            repr_string += f"\nStatus: {self.status}"
+        if self.x_coord is not None:
+            repr_string += f"\nX: {self.x_coord}"
+        if self.y_coord is not None:
+            repr_string += f"\nY: {self.y_coord}"
+        return repr_string
